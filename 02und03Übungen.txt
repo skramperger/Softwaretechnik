@@ -9,7 +9,7 @@ int main()
     printf("Seitelaenge eingeben:");
     scanf("%lf", &dlSeitenlaenge);
     
-    printf("Die Diagonale beträgt %lf." , dlSeitenlaenge*1.41);
+    printf("Die Diagonale beträgt %lf." , dblSeitenlaenge*1.41);
     
     return 0;
 }
@@ -41,7 +41,7 @@ int main()
     float flRadius, flPI = 3.1415926;
     printf("Radius eingeben:");
     scanf("%f", &flRadius);
-    printf("Die Oberflaeche betraegt %f und das Volumen betragt %f", 4*flRadius*flRadius*fPI, 4*flRadius*flRadius*flRadius*flPI/3);
+    printf("Die Oberflaeche betraegt %f und das Volumen betragt %f", 4*flRadius*flRadius*flPI, 4*flRadius*flRadius*flRadius*flPI/3);
     
     return 0;
 }
