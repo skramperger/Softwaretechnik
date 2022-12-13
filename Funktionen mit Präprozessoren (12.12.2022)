@@ -2,25 +2,35 @@
 #include <stdio.h>
 #include <math.h>
 
+//------------------------------------------------------------
+// Funktionen
+//------------------------------------------------------------
+
 // Funktion für Diskriminante berechnen
 double dblDiskriminante(double dblP, double dblQ)
 {
     return (dblP*dblP/4 - dblQ);
 }
 
-// Funktion für 
+// Funktion zur Berechnung von X1 einer quadratischen Gleichung
 double dblLoeseQuadratischeGleichungx1(double dblP, double dblQ)
 {
     return(-dblP/2 + sqrt(dblDiskriminante(dblP, dblQ)));
 }
 
+// Funktion zur Berechnung von X1 einer quadratischen Gleichung
 double dblLoeseQuadratischeGleichungx2(double dblP, double dblQ)
 {
     return(-dblP/2 - sqrt(dblDiskriminante(dblP, dblQ)));
 }
 
+
+//------------------------------------------------------------
+// Hauptprogramm
+//------------------------------------------------------------
 int main()
 {
+
     double dblx1, dblx2;
     
     dblx1 = dblLoeseQuadratischeGleichungx1(-2, -8);
@@ -79,6 +89,10 @@ int main()
 #include <math.h>
 #include "quadratischeGleichung.h"
 
+
+//------------------------------------------------------------
+// Hauptprogramm
+//------------------------------------------------------------
 int main()
 {
     double dblP, dblQ, dblx1, dblx2;
