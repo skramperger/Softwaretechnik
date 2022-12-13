@@ -90,9 +90,9 @@ int main()
 #include "quadratischeGleichung.h"
 
 
-//------------------------------------------------------------
+//-----------------------------------------------------------------------
 // Hauptprogramm
-//------------------------------------------------------------
+//-----------------------------------------------------------------------
 int main()
 {
     double dblP, dblQ, dblx1, dblx2;
@@ -111,12 +111,14 @@ int main()
 
 //-----------------------------------------------------------------------
 // quadratischeGleichung.h
+//-----------------------------------------------------------------------
 
 extern double dblLoeseQuadratischeGleichungx1(double dblP, double dblQ);
 extern double dblLoeseQuadratischeGleichungx2(double dblP, double dblQ);
 
 //-----------------------------------------------------------------------
 // quadratischeGleichung.c
+//-----------------------------------------------------------------------
 
 #include "quadratischeGleichung.h"
 #include <math.h>
