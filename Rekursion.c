@@ -21,7 +21,8 @@ int main()
     return 0;
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
-//  Labyrinth Path Finder mit eigenem Feld
+// Labyrinth Path Finder mit eigenem Feld
+// Programm von Erwin Unger (Professor an der HTL Bulme)
 
 #include <stdio.h>
 
