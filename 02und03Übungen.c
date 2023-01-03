@@ -7,7 +7,7 @@ int main()
 {
     double dblSeitenlaenge;
     printf("Seitelaenge eingeben:");
-    scanf("%lf", &dlSeitenlaenge);
+    scanf("%lf", &dblSeitenlaenge);
     
     printf("Die Diagonale beträgt %lf." , dblSeitenlaenge*1.41);
     

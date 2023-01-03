@@ -112,23 +112,24 @@ int main()
         printf("%u", uiErgebnis);
     }
     //Für Hochzahlen unter 0 und genau 0
-    else{
-        if(iPotenz < 0){
+    else
+    {
+        if(iPotenz < 0)
+        {
             iPotenz = (iPotenz * -1);
-            for (i=1; i<=iPotenz; i++){
+            for (i=1; i<=iPotenz; i++)
+            {
                 flErgebnis1 = flErgebnis1 * uiNummer;
             }
             flErgebnis2 = 1 / flErgebnis1;
             printf("%f", flErgebnis2);
         }
-        else{
+        else
+        {
 		printf("Error");
-            }
         }
     }
-    
     return 0;
-    
 }
 //-----------------------------------------------------------------------
 //Potenzzahl 3
