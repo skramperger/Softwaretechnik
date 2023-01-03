@@ -53,7 +53,7 @@ int main()
     int Primzahlen[(max-min)];
     
     ArrayCount = 0;
-    
+   
     while(number <= max)
     {
         count = 0; 
