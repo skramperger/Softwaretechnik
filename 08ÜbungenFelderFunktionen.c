@@ -81,11 +81,12 @@ int main()
         Primzahlen[i] = 0;
     }
     
+    printf("Alle Primzahlen von %d bis %d sind: | ", min, max);
     for (i=0; i<(max-min); i++)
     {
         if(Primzahlen[i] !=0)
         {
-            printf("%d ", Primzahlen[i]);
+            printf("%d | ", Primzahlen[i]);
         }
     }
     
