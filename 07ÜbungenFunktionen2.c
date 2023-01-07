@@ -52,6 +52,45 @@ int main()
     return 0;
 }
 //-------------------------------------------------------------------------------------------------------
+// Größter gemeinsamer Teiler | Verbesserung und Vereinfachung von Erwin Unger
+
+#include <stdio.h>
+
+unsigned int BerechneGGT(int Zahl1, int Zahl2)
+{
+    unsigned int GrosseZahl, KleineZahl;
+    
+    if(Zahl1==Zahl2){return Zahl1;}
+    GrosseZahl = (Zahl2 > Zahl1 ? Zahl2 : Zahl1);
+    KleineZahl = (Zahl2 > Zahl1 ? Zahl1 : Zahl2);
+    
+    unsigned int GroessterGemeinsamerTeiler, Rest, DivisionsErgebnis;
+    while (Rest != 0)
+    {
+        if (GrosseZahl % KleineZahl == 0){Rest = 0; return KleineZahl;}
+        else
+        {
+            Rest = GrosseZahl % KleineZahl;
+            GrosseZahl = KleineZahl;
+            KleineZahl = Rest;
+        }
+    }
+}
+
+int main()
+{   
+    unsigned int ErsteZahl, ZweiteZahl;
+    printf("Erste Zahl: ");
+    scanf("%u", &ErsteZahl);
+    printf("Zweite Zahl: ");
+    scanf("%u", &ZweiteZahl);
+    
+    printf("Der größte gemeinsame Teiler ist %u.", BerechneGGT(ErsteZahl, ZweiteZahl));
+    
+    return 0;
+}
+
+//-------------------------------------------------------------------------------------------------------
 // Kleinstes gemeinsames Vielfaches
 #include <stdio.h>
 
@@ -77,6 +116,43 @@ unsigned int BerechneGGT(int Zahl1, int Zahl2)
     {
         return (KleineZahl);
     }
+    
+    unsigned int GroessterGemeinsamerTeiler, Rest, DivisionsErgebnis;
+    while (Rest != 0)
+    {
+        if (GrosseZahl % KleineZahl == 0){Rest = 0; return KleineZahl;}
+        else
+        {
+            Rest = GrosseZahl % KleineZahl;
+            GrosseZahl = KleineZahl;
+            KleineZahl = Rest;
+        }
+    }
+}
+
+int main()
+{   
+    unsigned int ErsteZahl, ZweiteZahl;
+    printf("Erste Zahl: ");
+    scanf("%u", &ErsteZahl);
+    printf("Zweite Zahl: ");
+    scanf("%u", &ZweiteZahl);
+    
+    printf("Das kleinste gemeinsame Vielfache ist %u.", (ErsteZahl * ZweiteZahl /BerechneGGT(ErsteZahl, ZweiteZahl)));
+    
+    return 0;
+}
+//-------------------------------------------------------------------------------------------------------
+// Kleinstes gemeinsames Vielfaches | Verbesserung und Vereinfachung von Erwin Unger
+#include <stdio.h>
+
+unsigned int BerechneGGT(int Zahl1, int Zahl2)
+{
+    unsigned int GrosseZahl, KleineZahl;
+    
+    if(Zahl1==Zahl2){return Zahl1;}
+    GrosseZahl = (Zahl2 > Zahl1 ? Zahl2 : Zahl1);
+    KleineZahl = (Zahl2 > Zahl1 ? Zahl1 : Zahl2);
     
     unsigned int GroessterGemeinsamerTeiler, Rest, DivisionsErgebnis;
     while (Rest != 0)
