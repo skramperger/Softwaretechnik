@@ -1,4 +1,4 @@
-# Softwaretechnik_3ABELI
+# Softwaretechnik
 Alle geschriebenen Programme für die Schule
 
 Angefangen ab dem 3. Semester in der HTL Bulme Graz-Gösting.
