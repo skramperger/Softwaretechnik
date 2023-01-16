@@ -42,7 +42,7 @@ double BerechneVerkaufpreis(double Baumgroesse)
     if(Baumgroesse < 1.3)                       {return 26;}
     if(Baumgroesse < 1.7 && Baumgroesse >= 1.3) {return 43;}
     if(Baumgroesse < 2.1 && Baumgroesse >= 1.7) {return 55;}
-    if(Baumgroesse > 2.1){return 68;}
+    if(Baumgroesse > 2.1)                       {return 68;}
 
 }
 
