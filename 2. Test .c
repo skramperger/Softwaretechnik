@@ -3,24 +3,24 @@
 
 // Berechne die Summe der ungeraden Zahlen von 95 bis 181.
 
-#include <stdio.h>
+#include <stdio.h>
 
-int BerechneSumme(int Start, int Ende)
+int BerechneSumme(int Start, int Ende)
 {
-    int i, Summe = 0;
-    for (i=Start; i<Ende; i++)
-    {
-        Summe += i;
-    }
+    int i, Summe = 0;
+    for (i=Start; i<Ende; i++)
+    {
+        Summe += i;
+    }
 
-    return Summe;
+    return Summe;
 }
 
-int main()
+int main()
 {
-    printf("Die Summe von den zusammengezählten Zahlen von 95 bis 181 ist: %d.", BerechneSumme(95, 181));
+    printf("Die Summe von den zusammengezählten Zahlen von 95 bis 181 ist: %d.", BerechneSumme(95, 181));
 
-    return 0;
+    return 0;
 }
 //------------------------------------------------------------------------------------------------------
 // Beispiel 2
@@ -35,26 +35,26 @@ int main()
 // Bestimme den Verkaufspreis mit Hilfe deiner Funktion und gib diesen aus.
 
 
-#include <stdio.h>
+#include <stdio.h>
 
-double BerechneVerkaufpreis(double Baumgroesse)
+double BerechneVerkaufpreis(double Baumgroesse)
 {
-    if(Baumgroesse < 1.3)                       {return 26;}
-    if(Baumgroesse < 1.7 && Baumgroesse >= 1.3) {return 43;}
-    if(Baumgroesse < 2.1 && Baumgroesse >= 1.7) {return 55;}
-    if(Baumgroesse > 2.1){return 68;}
+    if(Baumgroesse < 1.3)                       {return 26;}
+    if(Baumgroesse < 1.7 && Baumgroesse >= 1.3) {return 43;}
+    if(Baumgroesse < 2.1 && Baumgroesse >= 1.7) {return 55;}
+    if(Baumgroesse > 2.1)                       {return 68;}
 
 }
 
-int main()
+int main()
 {
-    double Baumhoehe;
+    double Baumhoehe;
 
-    printf("Baumhöhe eingeben: ");
-    scanf("%lf", &Baumhoehe);
-    printf("Der Baum mit einer Höhe von %.2lf Meter kostet %.2lf Euro.", Baumhoehe, BerechneVerkaufpreis(Baumhoehe));
+    printf("Baumhöhe eingeben: ");
+    scanf("%lf", &Baumhoehe);
+    printf("Der Baum mit einer Höhe von %.2lf Meter kostet %.2lf Euro.", Baumhoehe, BerechneVerkaufpreis(Baumhoehe));
 
-    return 0;
+    return 0;
 }
 //------------------------------------------------------------------------------------------------------
 // Beispiel 3
