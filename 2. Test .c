@@ -9,8 +9,11 @@ int BerechneSumme(int Start, int Ende)
 {
     int i, Summe = 0;
     for (i=Start; i<Ende; i++)
-    {
-        Summe += i;
+    {   
+        if (i % 2 != 0)
+        {
+            Summe += i;
+        }
     }
 
     return Summe;
