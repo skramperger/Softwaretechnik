@@ -61,3 +61,33 @@ int main()
     return 0;
 }
 //---------------------------------------------------------------------------------------------------
+// Abfrage von String oder Zahl
+
+#include <stdio.h>
+
+int main()
+{
+    char Eingabe[100];
+    int ZahlEingabe, Anzahl;
+    
+    do
+    {
+        printf("Bitte Zahl eingeben:");
+        gets(Eingabe);
+        
+        
+        Anzahl = sscanf(Eingabe, "%d", &ZahlEingabe);
+        if (Anzahl == 0)
+        {
+            printf("Ungültige Eingabe!\n");
+        }
+        else
+        {
+            break;
+        } 
+    } while(1);
+
+    printf("Die Zahl ist %d", ZahlEingabe);
+    return 0;
+}
+//---------------------------------------------------------------------------------
