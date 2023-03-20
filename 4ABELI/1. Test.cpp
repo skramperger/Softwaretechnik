@@ -1,5 +1,8 @@
 //-----------------------------------------------------------------------------
 // Lauflicht
+// Die LED's des Multifunktionsshields sollen nach angegebenem Muster aufleuchten. Zwischen den Mustern soll 1 Sekunde Pause sein. 
+// Die Muster werden endlos wiederholt. Zuerst LED1 und LED3, dann LED2 und LED4 und zuletzt alle 4 LEDs.
+
 #include <Arduino.h>
 
 #define LED1 13
@@ -49,6 +52,7 @@ void loop() {
 }
 //-----------------------------------------------------------------------------
 // Lauflicht 2
+// Dieselbe Angabe wie Beispiel 1, allerdings unter der Verwendung von Registern.
 
 void setup() {
   // put your setup code here, to run once:
@@ -73,6 +77,11 @@ void loop() {
 }
 //-----------------------------------------------------------------------------
 // Abfragen
+// In einer Schleife soll alle 10 Millisekunden folgendes geschehen:
+//    - Wenn eine der 3 Tasten gedrückt ist, dann soll die erste LED leuchten
+//    - Wenn zwei der 3 Tasten gedrückt sind, dann soll auch die zweite LED leuchten
+//    - Wenn alle drei Tasten gedrückt sind, dann soll auch die dritte LED leuchten
+
 
 #include <Arduino.h>
 
