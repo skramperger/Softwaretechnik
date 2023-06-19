@@ -31,6 +31,7 @@ void loop() {
 
 //------------------------------------------------------------------------------
 // Beispiel 2
+// Es sollen 50 Werte von dem analogen Port A5 alle 20ms gelesen werden, in einem Feld gespeichert werden und den Durchschnitt der Werte berechnen und diesen seriell ausgeben.
 
 #include <Arduino.h>
 
@@ -64,6 +65,7 @@ void loop() {
 }
 //------------------------------------------------------------------------------
 // Beispiel 3
+// Eine PinChangeInterruptroutine, in der ein Lauflicht fortlaufend leuchten soll. Der Interrupt zählt einen Zähler hoch, der bei jedem LED wechsel ausgegeben werden soll
 
 #include <Arduino.h>
 
@@ -100,29 +102,35 @@ void setup() {
 void loop() {
   while (1)
   {
+    unsigned int InterruptCountVar = 0;
+
     cli();
-    Serial.println(InterruptCount);
+    InterruptCountVar = InterruptCount;
+    sei();
+    Serial.println(InterruptCountVar);
     digitalWrite(LED4, HIGH);
     digitalWrite(LED1,LOW);
-    sei();
     delay(LED_interval_delay);
     cli();
-    Serial.println(InterruptCount);
+    InterruptCountVar = InterruptCount;
+    sei();
+    Serial.println(InterruptCountVar);
     digitalWrite(LED1,HIGH);
     digitalWrite(LED2, LOW);
-    sei();
     delay(LED_interval_delay);
     cli();
-    Serial.println(InterruptCount);
+    InterruptCountVar = InterruptCount;
+    sei();
+    Serial.println(InterruptCountVar);
     digitalWrite(LED2, HIGH);
     digitalWrite(LED3, LOW);
-    sei();
     delay(LED_interval_delay);
     cli();
-    Serial.println(InterruptCount);
+    InterruptCountVar = InterruptCount;
+    sei();
+    Serial.println(InterruptCountVar);
     digitalWrite(LED3, HIGH);
     digitalWrite(LED4, LOW);
-    sei();
     delay(LED_interval_delay);
   }
 }
