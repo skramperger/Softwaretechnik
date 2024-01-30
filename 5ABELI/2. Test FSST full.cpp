@@ -82,6 +82,7 @@ void isr_key_up_fall(){
     }
     }
     Zeit.stop();
+    Zeit.reset();
     if (poti_value != 0.0){
         LEDs = 2; // LED2 leuchtet nach stoppen der Messung
     }
