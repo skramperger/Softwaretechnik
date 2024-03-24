@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://study.find-santa.eu/data/web/canvas_example.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Ping Pong</title>
+  <script type="text/javascript">
+
+// Stefan Kramperger
+
+/* To-Do: Adding Score (+ Animation)
+          Incrementing filled Speed
+          Smoothing Up and Down Movement
+          Being able to press multiple keys simultaneously
+*/
+
+const filled = {
+  x: 390,
+  y: 290,
+  dx: 1,
+  dy: 1,
+  width: 20,
+  height: 20,
+  background: 'orange',
+}
+
+// Saving positions for scoring and start
+let orig_dx = filled.dx;
+let orig_dy = filled.dy;
+
+const paddle_left = {
+  x: 10,
+  y: 250,
+  dx: 5,
+  dy: -1,
+  width: 10,
+  height: 100,
+  color: 'black',
+}
+
+const paddle_right = {
+  x: 780,
+  y: 250,
+  dx: 5,
+  dy: -1,
+  width:10,
+  height: 100,
+  color: 'black',
+}
+
+// Variables
+const paddle_speed = 20
+let text_enable = false;
+let score_left = 0;
+let score_right = 0;
+let game_starter = false;
+
+
+const onkeydown = (event) => {
+  // Paddle Left
+  //--------------------------------------------------
+  if (event.keyCode == 38 && paddle_left.y > 0){
+    if (paddle_left.y < paddle_speed){
+      paddle_left.y = 0;         // needed for not going offscreen because of paddle_speed
+    }
+    else {paddle_left.y -= paddle_speed;}
+  }
+
+  if (event.keyCode == 40 && paddle_left.y < (600 - paddle_left.height)){
+    if ((600 - paddle_left.y + paddle_left.height) < paddle_speed){
+      paddle_left.y = (600-paddle_left.height);
+    }
+    else {paddle_left.y += paddle_speed;}
+  }
+  //-------------------------------------------------
+
+  // Paddle Right
+  //-------------------------------------------------
+  if (event.keyCode == 104 && paddle_right.y > 0){
+    if (paddle_right.y < paddle_speed){
+      paddle_right.y = 0;         // needed for not going offscreen because of paddle_speed
+    }
+    else {paddle_right.y -= paddle_speed;}
+  }
+
+  if (event.keyCode == 98 && paddle_right.y < (600 - paddle_right.height)){
+    if ((600 - paddle_right.y + paddle_right.height) < paddle_speed){
+      paddle_right.y = (600-paddle_right.height);
+    }
+    else {paddle_right.y += paddle_speed;}
+  }
+  //-------------------------------------------------
+
+  // Space
+  //-------------------------------------------------
+  if (event.keyCode == 32){
+    filled.dx = orig_dx;
+    filled.dy = orig_dy;
+    text_enable = false;
+    game_starter = true;
+  }
+  //-------------------------------------------------
+}
+
+
+const draw = () => {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d", {alpha: false}); // 2d context for painting
+  
+
+  // canvas background fill color
+  ctx.fillStyle = "lightgrey";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // red square
+  ctx.fillStyle = filled.background;
+  ctx.fillRect(filled.x, filled.y, filled.width, filled.height);
+
+  // paddle_left
+  ctx.fillStyle = paddle_left.color;
+  ctx.fillRect(paddle_left.x, paddle_left.y, paddle_left.width, paddle_left.height);
+
+  // paddle_right
+  ctx.fillStyle = paddle_right.color;
+  ctx.fillRect(paddle_right.x, paddle_right.y, paddle_right.width, paddle_right.height);
+
+  // start text
+  if (game_starter == false){
+    ctx.font = "48px serif";
+    ctx.fillText("Press Space to start", 215, 310);
+    filled.dx = 0;
+    filled.dy = 0;
+  }
+
+  // pause text
+  if (text_enable == true){
+    ctx.font = "48px serif";
+    ctx.fillText("Press Space to continue", 170, 40);
+  }
+
+  // scores
+  ctx.font = "40px courier new";
+  ctx.fillText(score_left.toString(), 10, 585);
+  ctx.fillText(score_right.toString(), 770, 585);
+
+  // move squares
+  filled.x = filled.x + filled.dx;
+  filled.y = filled.y + filled.dy;
+
+  // collision detection with the paddles
+  // more info on https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Collision_detection
+  if ((filled.x == paddle_left.x + paddle_left.width) && (filled.y >= paddle_left.y && filled.y <= paddle_left.y + paddle_left.height) || 
+      (filled.x + 15 == paddle_right.x) && (filled.y >= paddle_right.y && filled.y <= (paddle_right.y + paddle_right.height))) {
+    filled.dx = -filled.dx;
+  }
+
+  // 
+  if ( filled.y > 570 || filled.y < 10) {
+    filled.dy = -filled.dy;
+  }
+
+  if (filled.x < -filled.width || filled.x > 800){
+
+      // Score changer
+      if (filled.x < -filled.width){
+        score_right++;
+      }
+      else if (filled.x > 800){
+        score_left++;
+      }
+      // filled object to the middle of the field
+      filled.x = 800/2 - filled.width;
+      filled.y = 600/2 - filled.height
+      orig_dx = -filled.dx;
+      orig_dy = filled.dy;
+      filled.dx = 0;
+      filled.dy = 0;
+      text_enable = true;
+  }
+}
+
+window.addEventListener("mousedown", onmousedown); // call `onmousedown` when the mouse is clicked
+window.addEventListener("keydown", onkeydown);  // call `onkeydown` when a key is pressed
+
+setInterval(draw, 5);  // call `drawCanvas` every 5 ms
+
+
+  </script>
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+
+
+
