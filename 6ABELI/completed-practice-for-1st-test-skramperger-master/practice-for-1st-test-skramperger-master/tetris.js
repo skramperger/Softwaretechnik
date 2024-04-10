@@ -17,9 +17,6 @@ const start_tetris = () => {
   rAF = requestAnimationFrame(loop);
 }
 
-// const clearedRowsText = document.querySelector("#cr-counter");
-
-
 // https://tetris.fandom.com/wiki/Tetris_Guideline
 
 // get a random integer between the range of [min,max]
