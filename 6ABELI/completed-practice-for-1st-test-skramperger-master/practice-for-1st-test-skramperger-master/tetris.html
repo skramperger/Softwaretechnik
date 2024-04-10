@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tetris</title>
+  <meta charset="utf-8">
+  <link href="tetris.css" rel="stylesheet">
+  <script src="tetris.js"></script>
+  <script>
+    window.addEventListener('load', start_tetris, false);
+  </script>
+<style >
+
+  </style>
+</head>
+<body>
+<canvas width="320" height="640" id="tetris"></canvas>
+
+
+<!-- 3. Add Static to the page (Cleared Rows: 0 / Points: 0)-->
+<span class ="cleared_rows">Cleared rows: </span> 
+<span id ="rowsCleared">0</span>
+
+<span class ="points">Points: </span> 
+<span id ="score">0</span>
+</body>
+</html>

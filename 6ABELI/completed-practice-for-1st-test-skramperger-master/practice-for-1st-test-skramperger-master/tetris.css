@@ -1,0 +1,46 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  border: 1px solid black;
+
+  /* 1. Adding Background */
+  background-image: url(https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?cs=srgb&dl=pexels-eberhard-grossgasteiger-1366919.jpg&fm=jpg);
+  background-position: center;
+  background-size: 320px 640px;
+}
+
+/* Attribute styling for all the static text (not required) */
+.cleared_rows {
+  position: relative;
+  top: 340px;
+  left: -324px;
+}
+
+.points {
+  position: relative;
+  top: 360px;
+  left: -420px;
+}
+
+#rowsCleared {
+  position: relative;
+  top: 340px;
+  left: -290px;
+}
+
+#score {
+  position: relative;
+  top: 360px;
+  left: -343px;
+}
+
