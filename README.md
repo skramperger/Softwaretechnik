@@ -92,9 +92,20 @@ To use the programs in this repository, follow these steps:
    cd repositoryname
 
 2. **Compile the programs**:
-   Use a C/C++ compiler like gcc for C files or g++ for C++ files. For example:
+Use a C/C++ compiler like gcc for C files or g++ for C++ files. For example:
    ```bash
    gcc 1.Test.c -o test
    ./test
+
+### Usage
+Each program in the repository serves a different educational purpose. Refer to the comments within the code for specific usage instructions and details about what each program does.
+
+### Example
+To run the LED running light program:
+   ```bash
+   cd 3ABELI/Labor
+   g++ led_running_light_millis.cpp -o led_running_light
+   ./led_running_light
+
 
 
