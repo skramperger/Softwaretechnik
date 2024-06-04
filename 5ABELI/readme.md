@@ -5,7 +5,7 @@ This folder contains various C++ programs and projects developed during the 5th 
 ### Key Programs and Exercises:
 
 - **Test and Preparation Programs**
-  - `2. Test FSST rework.cpp`: Reworked test program for FSST (Fachschule für Softwaretechnik).
+  - `2. Test FSST rework.cpp`: Reworked test program for FSST.
   - `Test_Vorbereitung(5ACELI-Test).cpp`: Preparation program for the 5ACELI test.
 
 - **Embedded Systems and Control Programs**
