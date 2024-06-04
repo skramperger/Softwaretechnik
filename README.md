@@ -112,15 +112,15 @@ To run the LED running light program:
 ### Contributing
 Contributions are welcome! To contribute:
 
-Markup : 1. Fork the repository.
-         2. Create a new branch (git checkout -b feature-branch).
-         3. Push to the branch (git push origin feature-branch).
-         4. Create a new Pull Request.
-         5. License
-         6. This project is licensed under the MIT License. See the LICENSE file for details.
+  1. Fork the repository.
+  2. Create a new branch (git checkout -b feature-branch).
+  3. Push to the branch (git push origin feature-branch).
+  4. Create a new Pull Request.
+  5. License
+  6. This project is licensed under the MIT License. See the LICENSE file for details.
 
 
-Acknowledgments
+### Acknowledgments
 - Thanks to HTL Bulme Graz-Gösting for the educational support.
 - Special thanks to all contributors and fellow students.
 
