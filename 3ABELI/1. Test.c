@@ -82,7 +82,10 @@ int main()
 //---------------------------------------------------------------------------------------------------------------------------------------
 // 3. Beispiel
 
+// Editiere das Projekt mit dem Namen 'Aufgabe3'.
+// Kopiere diesen Text ganz an den Anfang der Datei Quelle.c.
 // Berechne die Summe der ungeraden Zahlen von 95 bis 182.
+// Das fertige Programm wird zusammen mit den anderen Beispielen abgegeben.
 
 
 #include <stdio.h>
