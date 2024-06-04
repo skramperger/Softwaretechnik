@@ -96,6 +96,7 @@ Use a C/C++ compiler like gcc for C files or g++ for C++ files. For example:
    ```bash
    gcc 1.Test.c -o test
    ./test
+   ```
 
 ### Usage
 Each program in the repository serves a different educational purpose. Refer to the comments within the code for specific usage instructions and details about what each program does.
@@ -106,6 +107,21 @@ To run the LED running light program:
    cd 3ABELI/Labor
    g++ led_running_light_millis.cpp -o led_running_light
    ./led_running_light
+   ```
 
+### Contributing
+Contributions are welcome! To contribute:
+
+Markup : 1. Fork the repository.
+         2. Create a new branch (git checkout -b feature-branch).
+         3. Push to the branch (git push origin feature-branch).
+         4. Create a new Pull Request.
+         5. License
+         6. This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+Acknowledgments
+- Thanks to HTL Bulme Graz-Gösting for the educational support.
+- Special thanks to all contributors and fellow students.
 
 
