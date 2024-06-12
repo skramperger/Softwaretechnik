@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <vector> // needs to be added for vector usage in Version 7
 
 // Following along Caleb Curry from YouTube (C++ Object Oriented Programming Crash Course - Introductions + Full Tutorial)
+
+#define Version 7 // goes from 1-7
 
 // Basic Vocabulary for object oriented programming
 //-----------------------------------------------------------------------
@@ -20,84 +22,23 @@
 // inheritance -- creating derived classes that inherit properties from their parent classes
 // polymorphism -- treating multiple different objects as their base object type
 
-
 //-----------------------------------------------------------------------
 
+//--------------------------------------------------
+// Version 1: Basic Class Object usage
 
+#if Version == 1
 
 class Person {
-    protected:
-        std::string first;
-        std::string last;
-
-    public:
-    Person(std::string first, std::string last): first(first), last(last) {} // Konstruktor     (more common syntax)
-    Person() = default;     // allows to create a person object without putting data inside 
-    void setFirstName(std::string first) { this->first = first; }           // seter (set-method)
-    void setLastName(std::string last) { this->last = last; }
-
-    std::string getName() {return first + " " + last;}                      // geter (get-method)
-
-    void printFullName(){std::cout << first << " " << last << std::endl;}
-
-    virtual void printInfo() {                                  // virtual and override combine together to use the appropriate function
-        std::cout << "First name: " << first << std::endl;
-        std::cout << "Last name: " << last << std::endl;
-    }
-
-};
-
-class Employee : public Person{
-    std::string department;
-    public:
-        Employee(std::string firstName, std::string lastName, std::string department)
-                 : Person(firstName, lastName), department(department){}
-        std::string getDepartment(){
-            return department;
-        }
-        void setDepartment(std::string department){
-            this->department = department;
-        }
-        void printInfo() override {
-            std::cout << "First name: " << first << std::endl;      // protected instead of private allows usage of object classes in other classes
-            std::cout << "Last name: " << last << std::endl;
-            std::cout << "Department: " << department << std::endl;
-        }
-};
-
-
-int main() {
-    std::vector<Person*> people;
-    Employee e("Stefan", "Kramperger", "Sales"); 
-    Person p("Someone", "Else");
-
-    people.push_back(&p);
-    people.push_back(&e);
-
-    for(auto person: people) {
-        person->printInfo();
-    }
-
-    return 0;
-}
-
-
-
-
-
-/*
---------------------------------------------------
-Version 1: Basic Class Object usage
-
-class Person{
-    public: 
+public:
     std::string first;
     std::string last;
 
-    void printFullName(){
+    void printFullName()
+    {
         std::cout << first << " " << last << std::endl;
     }
-}
+};
 
 int main() {
     Person p;
@@ -107,27 +48,29 @@ int main() {
     p.printFullName();
 }
 
---------------------------------------------------
-Version 2: Encapsulation and set/get methods
+#endif
 
-class Person{
+//--------------------------------------------------
+// Version 2: Encapsulation and set/get methods
+
+#if Version == 2
+
+class Person {
     private:
-        std::string first;
-        std::string last;
+    std::string first;
+    std::string last;
 
-    public: 
-
-        void setFirstName(std::string first) { this->first = first; }       // set-method (mutator)
-        void setLastName(std::string last) { this->last = last; }           // set-method
-        std::string getName(){ return first + " " * last; }                 // get-method (returns the string and doesnt't output it like printFullName does)
-        void printFullName(){ std::cout << first << " " << last << std::endl; }
-}
+    public:
+    void setFirstName(std::string first) { this->first = first; } // set-method (mutator)
+    void setLastName(std::string last) { this->last = last; }     // set-method
+    std::string getName() { return first + " " + last; }          // get-method (returns the string and doesnt't output it like printFullName does)
+    void printFullName() { std::cout << first << " " << last << std::endl; }
+    };
 
 int main() {
     Person p;
     p.setFirstName("Stefan");
     p.setLastName("Kramperger");
-
     p.printFullName();
     std::cout << p.getName() << std::endl;
 
@@ -135,34 +78,35 @@ int main() {
     p2.setFirstName("Simon");
     p2.setLastName("Says");
     p2.printFullName();
+    }
 
-}
+#endif
 
---------------------------------------------------
-Version 3: Constructor
+//--------------------------------------------------
+// Version 3: Constructor
+
+#if Version == 3
 
 class Person {
-    private:        // encapsulation
-        std::string first;
-        std::string last;
+private: // encapsulation
+    std::string first;
+    std::string last;
 
-
-    public:
-    Person(std::string first, std::string last): first(first), last(last) {} // Konstruktor     (more common syntax)
-    Person() = default;     // allows to create a person object without putting data inside 
-    void setFirstName(std::string first) { this->first = first; }           // seter (set-method)
+public:
+    Person(std::string first, std::string last) : first(first), last(last) {} // Konstruktor     (more common syntax)
+    Person() = default;                                                       // allows to create a person object without putting data inside
+    void setFirstName(std::string first) { this->first = first; }             // seter (set-method)
     void setLastName(std::string last) { this->last = last; }
 
-    std::string getName() {return first + " " + last;}                      // geter (get-method)
+    std::string getName() { return first + " " + last; } // geter (get-method)
 
-    void printFullName(){std::cout << first << " " << last << std::endl;}
-
+    void printFullName() { std::cout << first << " " << last << std::endl; }
 };
 
-
-int main() {
+int main()
+{
     Person p("Stefan", "Kramperger");
-    p.printFullName(); 
+    p.printFullName();
     std::cout << p.getName() << std::endl;
 
     Person p2("Simon", "Says");
@@ -173,150 +117,174 @@ int main() {
     return 0;
 }
 
---------------------------------------------------
-Version 4: Inheritance: parent and child class (derived from and to)
+#endif
 
-class Person {
-    private:        // encapsulation
-        std::string first;
-        std::string last;
+//--------------------------------------------------
+// Version 4: Inheritance: parent and child class (derived from and to)
 
+#if Version == 4
 
-    public:
-    Person(std::string first, std::string last): first(first), last(last) {} // Konstruktor     (more common syntax)
-    Person() = default;     // allows to create a person object without putting data inside 
-    void setFirstName(std::string first) { this->first = first; }           // seter (set-method)
+class Person
+{
+private: // encapsulation
+    std::string first;
+    std::string last;
+
+public:
+    Person(std::string first, std::string last) : first(first), last(last) {} // Konstruktor     (more common syntax)
+    Person() = default;                                                       // allows to create a person object without putting data inside
+    void setFirstName(std::string first) { this->first = first; }             // seter (set-method)
     void setLastName(std::string last) { this->last = last; }
 
-    std::string getName() {return first + " " + last;}                      // geter (get-method)
+    std::string getName() { return first + " " + last; } // geter (get-method)
 
-    void printFullName(){std::cout << first << " " << last << std::endl;}
-
+    void printFullName() { std::cout << first << " " << last << std::endl; }
 };
 
-class Employee : public Person{
+class Employee : public Person
+{
     std::string department;
-    public:
-        Employee(std::string firstName, std::string lastName, std::string department)
-                 : Person(firstName, lastName), department(department){}
-        std::string getDepartment(){
-            return department;
-        }
-        void setDepartment(std::string department){
-            this->department = department;
-        }
-        void printInfo() {
-            std::cout << "Name: " + getName() << std::endl;
-            std::cout << "Department: " << department << std::endl;
-        }
+
+public:
+    Employee(std::string firstName, std::string lastName, std::string department)
+        : Person(firstName, lastName), department(department) {}
+    std::string getDepartment()
+    {
+        return department;
+    }
+    void setDepartment(std::string department)
+    {
+        this->department = department;
+    }
+    void printInfo()
+    {
+        std::cout << "Name: " + getName() << std::endl;
+        std::cout << "Department: " << department << std::endl;
+    }
 };
 
+int main()
+{
 
-int main() {
-
-    Employee e("Stefan", "Kramperger", "Sales"); 
+    Employee e("Stefan", "Kramperger", "Sales");
     e.printInfo();
 
     return 0;
 }
 
+#endif
 
---------------------------------------------------
-Version 5: Protected instead of private class sections
+//--------------------------------------------------
+// Version 5: Protected instead of private class sections
 
-class Person {
-    protected:                      // instead of the typical private allows variable usage outside of the class
-        std::string first;
-        std::string last;
+#if Version == 5
 
+class Person
+{
+protected: // instead of the typical private allows variable usage outside of the class
+    std::string first;
+    std::string last;
 
-    public:
-    Person(std::string first, std::string last): first(first), last(last) {} // Konstruktor     (more common syntax)
-    Person() = default;     // allows to create a person object without putting data inside 
-    void setFirstName(std::string first) { this->first = first; }           // seter (set-method)
+public:
+    Person(std::string first, std::string last) : first(first), last(last) {} // Konstruktor     (more common syntax)
+    Person() = default;                                                       // allows to create a person object without putting data inside
+    void setFirstName(std::string first) { this->first = first; }             // seter (set-method)
     void setLastName(std::string last) { this->last = last; }
 
-    std::string getName() {return first + " " + last;}                      // geter (get-method)
+    std::string getName() { return first + " " + last; } // geter (get-method)
 
-    void printFullName(){std::cout << first << " " << last << std::endl;}
-
+    void printFullName() { std::cout << first << " " << last << std::endl; }
 };
 
-class Employee : public Person{
+class Employee : public Person
+{
     std::string department;
-    public:
-        Employee(std::string firstName, std::string lastName, std::string department)
-                 : Person(firstName, lastName), department(department){}
-        std::string getDepartment(){
-            return department;
-        }
-        void setDepartment(std::string department){
-            this->department = department;
-        }
-        void printInfo() {
-            std::cout << "First name: " << first << std::endl;      // protected instead of private allows usage of object classes in other classes
-            std::cout << "Last name: " << last << std::endl;
-            std::cout << "Department: " << department << std::endl;
-        }
+
+public:
+    Employee(std::string firstName, std::string lastName, std::string department)
+        : Person(firstName, lastName), department(department) {}
+    std::string getDepartment()
+    {
+        return department;
+    }
+    void setDepartment(std::string department)
+    {
+        this->department = department;
+    }
+    void printInfo()
+    {
+        std::cout << "First name: " << first << std::endl; // protected instead of private allows usage of object classes in other classes
+        std::cout << "Last name: " << last << std::endl;
+        std::cout << "Department: " << department << std::endl;
+    }
 };
 
+int main()
+{
 
-int main() {
-
-    Employee e("Stefan", "Kramperger", "Sales"); 
+    Employee e("Stefan", "Kramperger", "Sales");
     e.printInfo();
 
     return 0;
 }
 
+#endif
 
---------------------------------------------------
-Version 6: override and virtual usage
+//--------------------------------------------------
+// Version 6: override and virtual usage
 
-class Person {
-    protected:
-        std::string first;
-        std::string last;
+#if Version == 6
 
-    public:
-    Person(std::string first, std::string last): first(first), last(last) {} // Konstruktor     (more common syntax)
-    Person() = default;     // allows to create a person object without putting data inside 
-    void setFirstName(std::string first) { this->first = first; }           // seter (set-method)
+class Person
+{
+protected:
+    std::string first;
+    std::string last;
+
+public:
+    Person(std::string first, std::string last) : first(first), last(last) {} // Konstruktor     (more common syntax)
+    Person() = default;                                                       // allows to create a person object without putting data inside
+    void setFirstName(std::string first) { this->first = first; }             // seter (set-method)
     void setLastName(std::string last) { this->last = last; }
 
-    std::string getName() {return first + " " + last;}                      // geter (get-method)
+    std::string getName() { return first + " " + last; } // geter (get-method)
 
-    void printFullName(){std::cout << first << " " << last << std::endl;}
+    void printFullName() { std::cout << first << " " << last << std::endl; }
 
-    virtual void printInfo() {                                  // virtual and override combine together to use the appropriate function
+    virtual void printInfo()
+    { // virtual and override combine together to use the appropriate function
         std::cout << "First name: " << first << std::endl;
         std::cout << "Last name: " << last << std::endl;
     }
-
 };
 
-class Employee : public Person{
+class Employee : public Person
+{
     std::string department;
-    public:
-        Employee(std::string firstName, std::string lastName, std::string department)
-                 : Person(firstName, lastName), department(department){}
-        std::string getDepartment(){
-            return department;
-        }
-        void setDepartment(std::string department){
-            this->department = department;
-        }
-        void printInfo() override {
-            std::cout << "First name: " << first << std::endl;      // protected instead of private allows usage of object classes in other classes
-            std::cout << "Last name: " << last << std::endl;
-            std::cout << "Department: " << department << std::endl;
-        }
+
+public:
+    Employee(std::string firstName, std::string lastName, std::string department)
+        : Person(firstName, lastName), department(department) {}
+    std::string getDepartment()
+    {
+        return department;
+    }
+    void setDepartment(std::string department)
+    {
+        this->department = department;
+    }
+    void printInfo() override
+    {
+        std::cout << "First name: " << first << std::endl; // protected instead of private allows usage of object classes in other classes
+        std::cout << "Last name: " << last << std::endl;
+        std::cout << "Department: " << department << std::endl;
+    }
 };
 
+int main()
+{
 
-int main() {
-
-    Employee e("Stefan", "Kramperger", "Sales"); 
+    Employee e("Stefan", "Kramperger", "Sales");
     e.printInfo();
     Person e2("Someone", "Else");
     e2.printInfo();
@@ -324,67 +292,76 @@ int main() {
     return 0;
 }
 
---------------------------------------------------
-Version 7: Polymorphism
+#endif
 
-#include <vector> // needs to be added for vector usage
+//--------------------------------------------------
+// Version 7: Polymorphism
 
-class Person {
-    protected:
-        std::string first;
-        std::string last;
+#if Version == 7
 
-    public:
-    Person(std::string first, std::string last): first(first), last(last) {} // Konstruktor     (more common syntax)
-    Person() = default;     // allows to create a person object without putting data inside 
-    void setFirstName(std::string first) { this->first = first; }           // seter (set-method)
+class Person
+{
+protected:
+    std::string first;
+    std::string last;
+
+public:
+    Person(std::string first, std::string last) : first(first), last(last) {} // Konstruktor     (more common syntax)
+    Person() = default;                                                       // allows to create a person object without putting data inside
+    void setFirstName(std::string first) { this->first = first; }             // seter (set-method)
     void setLastName(std::string last) { this->last = last; }
 
-    std::string getName() {return first + " " + last;}                      // geter (get-method)
+    std::string getName() { return first + " " + last; } // geter (get-method)
 
-    void printFullName(){std::cout << first << " " << last << std::endl;}
+    void printFullName() { std::cout << first << " " << last << std::endl; }
 
-    virtual void printInfo() {                                  // virtual and override combine together to use the appropriate function
+    virtual void printInfo()
+    { // virtual and override combine together to use the appropriate function
         std::cout << "First name: " << first << std::endl;
         std::cout << "Last name: " << last << std::endl;
     }
-
 };
 
-class Employee : public Person{
+class Employee : public Person
+{
     std::string department;
-    public:
-        Employee(std::string firstName, std::string lastName, std::string department)
-                 : Person(firstName, lastName), department(department){}
-        std::string getDepartment(){
-            return department;
-        }
-        void setDepartment(std::string department){
-            this->department = department;
-        }
-        void printInfo() override {
-            std::cout << "First name: " << first << std::endl;      // protected instead of private allows usage of object classes in other classes
-            std::cout << "Last name: " << last << std::endl;
-            std::cout << "Department: " << department << std::endl;
-        }
+
+public:
+    Employee(std::string firstName, std::string lastName, std::string department)
+        : Person(firstName, lastName), department(department) {}
+    std::string getDepartment()
+    {
+        return department;
+    }
+    void setDepartment(std::string department)
+    {
+        this->department = department;
+    }
+    void printInfo() override
+    {
+        std::cout << "First name: " << first << std::endl; // protected instead of private allows usage of object classes in other classes
+        std::cout << "Last name: " << last << std::endl;
+        std::cout << "Department: " << department << std::endl;
+    }
 };
 
-
-int main() {
-    std::vector<Person*> people;
-    Employee e("Stefan", "Kramperger", "Sales"); 
+int main()
+{
+    std::vector<Person *> people;
+    Employee e("Stefan", "Kramperger", "Sales");
     Person p("Someone", "Else");
 
     people.push_back(&p);
     people.push_back(&e);
 
-    for(auto person: people) {
+    for (auto person : people)
+    {
         person->printInfo();
     }
 
     return 0;
 }
 
---------------------------------------------------
+#endif
 
-*/
+//--------------------------------------------------
